@@ -1,10 +1,10 @@
 import {
-  createProduct as createProductModel,
-  getProducts as getProductsModel,
-  getProductById as getProductByIdModel,
-  updateProduct as updateProductModel,
-  deleteProduct as deleteProductModel,
-} from "../models/Product.js";
+  createProductModel,
+  getProductsModel,
+  getProductByIdModel,
+  updateProductModel,
+  deleteProductModel,
+} from "../models/product.js";
 
 export const getProducts = async (req, res) => {
   const products = await getProductsModel();
@@ -14,7 +14,7 @@ export const getProducts = async (req, res) => {
 export const getProductById = async (req, res) => {
   const { id } = req.params;
 
-  const product = await getProductByIdModel(id);
+  const product = await getProductByIdModelModel(id);
 
   if (!product) {
     return res.status(404).json({

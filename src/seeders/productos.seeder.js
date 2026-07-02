@@ -37,10 +37,15 @@ const productsSeeders = [
   },
 ];
 
-const createProducts = () => {
-  productsSeeders.forEach(async (product) => {
-    await addDoc(productsCollection, product);
-  });
+const createProducts = async () => {
+  for (const product of productsSeeders) {
+    try {
+      const ref = await addDoc(productsCollection, product);
+      console.log("Added product with id:", ref.id);
+    } catch (err) {
+      console.error("Error adding product:", err);
+    }
+  }
 };
 
 createProducts();

@@ -14,7 +14,7 @@ const productsCollection = collection(db, "products");
 
 // CRUD - Create, Read, Update, Delete
 
-export const createProduct = async (product) => {
+export const createProductModel = async (product) => {
   const productRef = await addDoc(productsCollection, product);
 
   return {
@@ -23,13 +23,13 @@ export const createProduct = async (product) => {
   };
 };
 
-export const getProducts = async () => {
+export const getProductsModel = async () => {
   const snapshot = await getDocs(productsCollection);
 
   const products = [];
 
   snapshot.forEach((doc) => {
-    // console.log(doc.id, "=>", doc.data());
+   
     products.push({
       id: doc.id,
       ...doc.data(),
@@ -39,7 +39,7 @@ export const getProducts = async () => {
   return products;
 };
 
-export const getProductById = async (id) => {
+export const getProductByIdModel = async (id) => {
   const productRef = doc(productsCollection, id);
   const snapshot = await getDoc(productRef);
 
@@ -53,14 +53,13 @@ export const getProductById = async (id) => {
   };
 };
 
-export const updateProduct = async (id, product) => {
+export const updateProductModel = async (id, product) => {
   const productRef = doc(productsCollection, id);
   const snapshot = await getDoc(productRef);
 
   if (!snapshot.exists()) {
     return null;
-    // throw new Error('El producto no existe')
-  }
+   }
 
   await updateDoc(productRef, product);
 
@@ -70,7 +69,7 @@ export const updateProduct = async (id, product) => {
   };
 };
 
-export const deleteProduct = async (id) => {
+export const deleteProductModel = async (id) => {
   const productRef = doc(productsCollection, id);
   const snapshot = await getDoc(productRef);
 

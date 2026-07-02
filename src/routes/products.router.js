@@ -17,10 +17,7 @@ router.post("/", auth, createProduct);
 
 router.get("/", getProducts);
 router.get("/:id", getProductById);
-// router.get("/:sku", getProductBySKU);
-
 router.put("/:id", auth, updateProduct);
-
 router.delete("/:id", auth, deleteProduct);
 
 export default router;
