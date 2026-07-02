@@ -26,16 +26,17 @@ export const getProductById = async (req, res) => {
 };
 
 export const createProduct = async (req, res) => {
-  const { name, price, stock } = req.body;
+  const { title, description, price, stock } = req.body;
 
-  if (!name || !price || !stock) {
+  if (!title || !description || !price || !stock) {
     return res.status(422).json({
       message: "Faltan datos obligatorios",
     });
   }
 
   const newProduct = await createProductModel({
-    name,
+    title,
+    description,
     price,
     stock,
   });
@@ -45,16 +46,17 @@ export const createProduct = async (req, res) => {
 
 export const updateProduct = async (req, res) => {
   const { id } = req.params;
-  const { name, price, stock } = req.body;
+  const { title, description, price, stock } = req.body;
 
-  if (!name || !price || !stock) {
+  if (!title || !description || !price || !stock) {
     return res.status(422).json({
       message: "Faltan datos obligatorios",
     });
   }
 
   const updatedProduct = await updateProductModel(id, {
-    name,
+    title,
+    description,
     price,
     stock,
   });
