@@ -79,7 +79,6 @@ Rutas principales disponibles:
 ## Estructura del proyecto
 
 - `index.js` - punto de entrada de la aplicación
-- `app.js` - configuración del servidor Express
 - `src/routes/` - definición de rutas
 - `src/controllers/` - lógica de controladores
 - `src/models/` - conexión y operaciones con Firestore
