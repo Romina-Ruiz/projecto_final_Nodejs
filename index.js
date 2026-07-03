@@ -5,7 +5,7 @@ import express from "express";
 import cors from "cors";
 import productsRouter from "./src/routes/products.router.js";
 import authRouter from "./src/routes/auth.router.js";
-
+import { auth } from "./src/middlewares/auth.middleware.js";
 
 const app = express();
 

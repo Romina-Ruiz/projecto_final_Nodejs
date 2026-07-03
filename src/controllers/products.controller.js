@@ -6,24 +6,7 @@ import {
   deleteProductModel,
 } from "../models/product.js";
 
-export const getProducts = async (req, res) => {
-  const products = await getProductsModel();
-  res.json(products);
-};
 
-export const getProductById = async (req, res) => {
-  const { id } = req.params;
-
-  const product = await getProductByIdModelModel(id);
-
-  if (!product) {
-    return res.status(404).json({
-      message: "Producto no encontrado",
-    });
-  }
-
-  res.json(product);
-};
 
 export const createProduct = async (req, res) => {
   const { title, description, price, stock } = req.body;
@@ -43,6 +26,26 @@ export const createProduct = async (req, res) => {
 
   res.status(201).json(newProduct);
 };
+
+export const getProducts = async (req, res) => {
+  const products = await getProductsModel();
+  res.json(products);
+};
+
+export const getProductById = async (req, res) => {
+  const { id } = req.params;
+
+  const product = await getProductByIdModel(id);
+
+  if (!product) {
+    return res.status(404).json({
+      message: "Producto no encontrado",
+    });
+  }
+
+  res.json(product);
+};
+
 
 export const updateProduct = async (req, res) => {
   const { id } = req.params;
